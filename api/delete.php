@@ -15,6 +15,7 @@ $getall = mysqli_query($connect, "DELETE FROM gallery WHERE imageid = $deskripsi
  $errormassage = mysqli_affected_rows($connect);
 
 if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
+    if($errormassage > 0){
   $data = [
     "status-code" => 200,
     "massage" =>  "data berhasil dihapus",
@@ -22,7 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] === "DELETE") {
   ];
 
   header("HTTP/1.0 200 $data[massage]");
-  echo json_encode($data);
+  echo json_encode($data);}
+  else{ $data = [
+    "status-code" => 404,
+    "massage" =>  "data gagal dihapus",
+    "result" =>  $errormassage,
+  ];
+
+  header("HTTP/1.0 404 $data[massage]"); 
+  echo json_encode($data);}
 } else {
   $datagagal = [
     "data" => "sir method is not allowed",
