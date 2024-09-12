@@ -8,6 +8,8 @@ $connect = mysqli_connect("localhost","root","","devapic");
 
 $search = $_GET["s"];
 
+
+
 if($_SERVER["REQUEST_METHOD"] === "GET"){
     $get = mysqli_query($connect,"SELECT * FROM gallery WHERE deskripsi LIKE '$search%' ;");
     $result = mysqli_fetch_assoc($get);

@@ -7,6 +7,15 @@ async function post(input) {
     .then(() => hasil("http://localhost/apitest/api/get.php"))
     .catch((err) => console.error(`anda mendapat error berikut ${err}`));
 }
+async function deletedata(input) {
+  const jadi = await fetch(`http://localhost/apitest/api/post.php?d=${input}`, {
+    method: "delete",
+    body: { deskripsi: "oke" },
+  })
+    .then((response) => response.json())
+    .then(() => hasil("http://localhost/apitest/api/get.php"))
+    .catch((err) => console.error(`anda mendapat error berikut ${err}`));
+}
 async function hasil(source) {
   const jadi = await fetch(source, {
     method: "get",
@@ -15,6 +24,7 @@ async function hasil(source) {
     .then((res) => {
       res["data"].forEach(element => {        
         const paragraph = document.createElement("li");
+        paragraph.setAttribute("data-id" , element["imageid"])
         paragraph.textContent = element["deskripsi"];
         document.querySelector("ul").appendChild(paragraph);
     });
@@ -48,3 +58,4 @@ inputsearch.addEventListener("input",e => {
 })
 
 hasil("http://localhost/apitest/api/get.php")
+
