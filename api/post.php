@@ -13,7 +13,8 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
 $getall = mysqli_query($connect,"INSERT INTO gallery (deskripsi) VALUES ('$deskripsi');");
 $data = [
     "data" => "data berhasil masuk",
-    "status-code" => 200
+    "status-code" => 200,
+    "request" => $deskripsi
    ];
    echo json_encode($data);
 }
