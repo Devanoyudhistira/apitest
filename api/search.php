@@ -4,14 +4,14 @@ header("Content-Type:application/json");
 header("Access-Control-Allow-Method:GET");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
 
-$connect = mysqli_connect("localhost","root","","devapic");
+$connect = mysqli_connect("localhost","root","","siswa");
 
 $search = $_GET["s"];
 
 
 
 if($_SERVER["REQUEST_METHOD"] === "GET"){
-    $get = mysqli_query($connect,"SELECT * FROM gallery WHERE deskripsi LIKE '$search%' ;");
+    $get = mysqli_query($connect,"SELECT * FROM siswa WHERE name LIKE '$search%' ;");
     $result = mysqli_fetch_assoc($get);
     if(!is_null($result)){
     $data = [

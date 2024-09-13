@@ -5,12 +5,12 @@ header("Content-Type:application/json");
 header("Access-Control-Allow-Method:POST");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
 
-$connect = mysqli_connect("localhost","root","","devapic");
+$connect = mysqli_connect("localhost","root","","siswa");
 
 $deskripsi = $_GET["d"];
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-$getall = mysqli_query($connect,"INSERT INTO gallery (deskripsi) VALUES ('$deskripsi');");
+$getall = mysqli_query($connect,"INSERT INTO siswa (name) VALUES ('$deskripsi');");
 $data = [
     "data" => "data berhasil masuk",
     "status-code" => 200,

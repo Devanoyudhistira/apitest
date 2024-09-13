@@ -5,9 +5,8 @@ async function post(input) {
   })
     .then((response) => response.json())
     .then((e) => {
-      console.log(e["request"])
       const paragraph = document.createElement("li");
-        paragraph.setAttribute("data-id", e["imageid"]);
+        paragraph.setAttribute("data-id", e["id"]);
         paragraph.textContent = e["request"];
         document.querySelector("ul").appendChild(paragraph)
     })
@@ -30,8 +29,8 @@ async function hasil(source) {
     .then((res) => {
       res["data"].forEach((element) => {
         const paragraph = document.createElement("li");
-        paragraph.setAttribute("data-id", element["imageid"]);
-        paragraph.textContent = element["deskripsi"];
+        paragraph.setAttribute("data-id", element["id"]);
+        paragraph.textContent = element["name"];
         document.querySelector("ul").appendChild(paragraph);
       });
     });
@@ -53,7 +52,7 @@ const cari = async (keyword) => {
     .then((results) => results.json())
     .then(
       (data) =>
-        (document.querySelector("ul").textContent = data["data"]["deskripsi"])
+        (document.querySelector("ul").textContent = data["data"]["name"])
     )
     .catch(
       (err) =>

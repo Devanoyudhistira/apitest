@@ -6,9 +6,9 @@ header("Content-Type:application/json");
 header("Access-Control-Allow-Method:GET");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
 
-$connect = mysqli_connect("localhost", "root", "", "devapic");
+$connect = mysqli_connect("localhost", "root", "", "siswa");
 
-$getall = mysqli_query($connect, "SELECT * FROM gallery");
+$getall = mysqli_query($connect, "SELECT * FROM siswa");
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
   $data = [
