@@ -36,7 +36,7 @@ async function hasil(source) {
     });
 }
 
-const formulir = document.querySelector("form");
+const formulir = document.querySelector("#create");
 
 formulir.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -68,5 +68,34 @@ inputsearch.addEventListener("input", (e) => {
     hasil("http://localhost/apitest/api/get.php");
   }
 });
+
+function uploadFile() {
+  const fileInput = document.getElementById('fileInput');
+  const file = fileInput.files[0];
+  
+  if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+      
+      fetch(`http://localhost/apitest/api/imagepost.php`, {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              console.log('File uploaded:', data.message);
+              console.log(data)
+          } else {
+              console.error('Upload failed:', data.message);
+          }
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+  } else {
+      console.error('No file selected');
+  }
+}
 
 hasil("http://localhost/apitest/api/get.php");

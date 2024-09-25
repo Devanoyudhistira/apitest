@@ -1,7 +1,5 @@
 <?php
-
-
-header("Access-Control-Allow-Origin");
+header("Access-Control-Allow-Origin: *");
 header("Content-Type:application/json");
 header("Access-Control-Allow-Method:GET");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
@@ -27,6 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     "data" => "sir method is not allowed",
     "status-code" => 405
   ];
-  header("HTTP/1.0 500 Internal Server Error");
+  header("HTTP/1.0 405 Internal Server Error");
   echo json_encode($datagagal);
 }

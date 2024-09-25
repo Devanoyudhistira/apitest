@@ -1,16 +1,16 @@
 <?php
 
 
-header("Access-Control-Allow-Origin");
+header("Access-Control-Allow-Origin:");
 header("Content-Type:application/json");
 header("Access-Control-Allow-Method:delete");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
 
-$connect = mysqli_connect("localhost", "root", "", "devapic");
+$connect = mysqli_connect("localhost", "root", "", "siswa");
 
 $deskripsi = $_GET["id"];
 
-$getall = mysqli_query($connect, "DELETE FROM gallery WHERE imageid = $deskripsi");
+$getall = mysqli_query($connect, "DELETE FROM siswa WHERE id = $deskripsi");
 
  $errormassage = mysqli_affected_rows($connect);
 

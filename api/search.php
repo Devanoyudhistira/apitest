@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin:");
+header("Access-Control-Allow-Origin:*");
 header("Content-Type:application/json");
 header("Access-Control-Allow-Method:GET");
 header("Access-Control-Allow-Headers:content-Type,Access-Control-Allow-Header,Authorization,X-Request-Width");
